@@ -1,5 +1,6 @@
 
-public class Cone {
+public interface Cone {
 
-	
+	void incluir();
+
 }
