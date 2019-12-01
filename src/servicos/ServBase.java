@@ -1,8 +1,11 @@
 package servicos;
 
+import servicos.Servicos;
+
 public abstract class ServBase implements Servicos {
 	@Override
 	public String getDescricao() {		
-		return "Serviços adicionais:\n";
+		return "Serviï¿½os adicionais:\n";
 	}
 }
+
