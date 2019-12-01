@@ -10,12 +10,13 @@ public class Aplicacao {
 		HotelCozyCone hotel = HotelCozyCone.getInstance();
 		
 		//observers
-		new Letreiro(hotel);
-		new Cliente(hotel);
-		new Cliente(hotel);		
-		new Cliente(hotel);		
-		new Cliente(hotel);		
-		new Cliente(hotel);
+		new Letreiro(hotel);		
+		new Cliente(hotel, "AAA");		
+		new Cliente(hotel, "BBB");		
+		new Cliente(hotel, "CCC");		
+		new Cliente(hotel, "DDD");		
+		new Cliente(hotel, "EEE");		
+		new Cliente(hotel, "FFF");
 		
 		//factory
 		FabricaCone fabrica = new FabricaCone();

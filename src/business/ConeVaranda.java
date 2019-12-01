@@ -3,28 +3,40 @@ package business;
 import business.Cone;
 
 public class ConeVaranda implements Cone {
-
-	float diaria, taxaFesta;
+	
+	double diaria = 620;
+	double taxaFesta = 1.3;
 	
 	@Override
-	public void incluir() {
+	public String incluir() {
 		diaria = 620;
-		taxaFesta = (float) 1.3;		
+		taxaFesta = (float) 1.3;
+		return "Escolheu cone com varanda ";		
 	}
-	
-	public float getDiaria() {
-		return diaria;
-	}
-	
-	public void setDiaria(float diaria) {
-		this.diaria = diaria;
-	}
-	
-	public float getTaxaFesta() {
-		return taxaFesta;
-	}
-	
-	public void setTaxaFesta(float taxaFesta) {
-		this.taxaFesta = taxaFesta;
-	}
+//	
+//	@Override
+//	public double getDiaria() {
+//		return diaria;
+//	}
+//	
+//	@Override
+//	public void setDiaria(double diaria) {
+//		this.diaria = diaria;
+//	}
+//	
+//	@Override
+//	public double getTaxaFesta() {
+//		return taxaFesta;
+//	}
+//	
+//	@Override
+//	public void setTaxaFesta(double taxaFesta) {
+//		this.taxaFesta = taxaFesta;
+//	}
+//
+//	@Override
+//	public String incluir() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 }

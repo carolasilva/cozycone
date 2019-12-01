@@ -12,7 +12,7 @@ public class Cliente extends Observador {
 		this.nome = nome;
 	}
 
-	public Cliente(HotelCozyCone hotel) {
+	public Cliente(HotelCozyCone hotel, String nome) {
 		this.hotel = hotel;
 		this.hotel.attach(this);
 		this.setNome(nome);

@@ -4,27 +4,33 @@ import business.Cone;
 
 public class ConeSimples implements Cone {
 
-	float diaria, taxaFesta;
+	double diaria = 480;
+	double taxaFesta = 1.4;
 	
 	@Override
-	public void incluir() {
+	public String incluir() {
 		diaria = 480;
-		taxaFesta = (float) 1.4;		
+		taxaFesta = (float) 1.4;
+		return "Escolheu cone simples ";	
 	}
-	
-	public float getDiaria() {
-		return diaria;
-	}
-	
-	public void setDiaria(float diaria) {
-		this.diaria = diaria;
-	}
-	
-	public float getTaxaFesta() {
-		return taxaFesta;
-	}
-	
-	public void setTaxaFesta(float taxaFesta) {
-		this.taxaFesta = taxaFesta;
-	}
+//	
+//	@Override
+//	public double getDiaria() {
+//		return diaria;
+//	}
+//	
+//	@Override
+//	public void setDiaria(double diaria) {
+//		this.diaria = diaria;
+//	}
+//	
+//	@Override
+//	public double getTaxaFesta() {
+//		return taxaFesta;
+//	}
+//	
+//	@Override
+//	public void setTaxaFesta(double taxaFesta) {
+//		this.taxaFesta = taxaFesta;
+//	}
 }
