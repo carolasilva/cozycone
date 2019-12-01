@@ -1,3 +1,6 @@
+package app;
+
+import business.*;
 
 public class Aplicacao {
 
@@ -7,8 +10,8 @@ public class Aplicacao {
 		HotelCozyCone hotel = HotelCozyCone.getInstance();
 		
 		//observers
-		new Letreiro(hotel);		
-		new Cliente(hotel);		
+		new Letreiro(hotel);
+		new Cliente(hotel);
 		new Cliente(hotel);		
 		new Cliente(hotel);		
 		new Cliente(hotel);		

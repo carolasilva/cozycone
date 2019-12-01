@@ -1,3 +1,6 @@
+package business;
+
+import business.HotelCozyCone;
 
 public class Letreiro extends Observador {
 	
@@ -13,9 +16,9 @@ public class Letreiro extends Observador {
 	public void update() {
 
 		if (haVagas == false)
-			System.out.println("Letreiro aceso: H¡ VAGAS");
+			System.out.println("business.Letreiro aceso: H√Å VAGAS");
 		else if (haVagas == true)
-			System.out.println("Letreiro apagado...");
+			System.out.println("business.Letreiro apagado...");
 	}
 	
 }

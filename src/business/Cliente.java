@@ -1,3 +1,4 @@
+package business;
 
 public class Cliente extends Observador {
 
@@ -20,7 +21,7 @@ public class Cliente extends Observador {
 	@Override
 	public void update() {
 		
-		System.out.print("Cliente " + this.getNome() + "notificado!");
+		System.out.print("business.Cliente " + this.getNome() + "notificado!");
 	}
 	
 }

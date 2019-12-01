@@ -1,12 +1,15 @@
+package business;
 
-public class ConeSimples implements Cone{
+import business.Cone;
+
+public class ConeVaranda implements Cone {
 
 	float diaria, taxaFesta;
 	
 	@Override
 	public void incluir() {
-		diaria = 480;
-		taxaFesta = (float) 1.4;		
+		diaria = 620;
+		taxaFesta = (float) 1.3;		
 	}
 	
 	public float getDiaria() {

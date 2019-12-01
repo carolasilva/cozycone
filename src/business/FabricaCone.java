@@ -1,3 +1,8 @@
+package business;
+
+import business.Cone;
+import business.ConeSimples;
+import business.ConeVaranda;
 
 public class FabricaCone {
 	
