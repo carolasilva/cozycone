@@ -1,11 +1,8 @@
-package business;
+package servicos;
 
 public abstract class ServBase implements Servicos {
-
 	@Override
-	public String getDesc() {		
+	public String getDescricao() {		
 		return "Serviços adicionais:\n";
-	}	
-
-	public double getPreco();
+	}
 }
