@@ -29,4 +29,17 @@ public class HotelCozyConeTest {
         assertEquals(null, hotel.buscaClienteNoHotel("Carol"));
 
     }
+
+    @Test
+    public void checkoutTest () {
+        hotel.checkin(cliente, 5, TipoCone.SIMPLES);
+        assertEquals(cliente, hotel.buscaClienteNoHotel("Carol"));
+        hotel.checkout("Carol");
+        assertEquals(null, hotel.buscaClienteNoHotel("Carol"));
+    }
+
+    @Test
+    public void checkoutClienteInexistente() {
+        assertEquals(0, hotel.checkout("oi"), 0);
+    }
 }

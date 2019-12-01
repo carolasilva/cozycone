@@ -67,10 +67,18 @@ public class HotelCozyCone {
 			System.out.println("Esse cliente não está hospedado no hotel");
 			return 0;
 		}
+		Cone cone = buscaConeNoHotel(nome);
+		int diasSemFesta = cone.getDias() - cone.getNumeroFestas();
+		int diasComFesta = cone.getNumeroFestas();
 
-		return 0;
+		cone.setDias(0);
+		cone.setCliente(null);
+		cone.setOcupado(false);
+		cone.setNumeroFestas(0);
+
+		return (diasSemFesta * cone.getDiaria()) + (diasComFesta + (cone.getTaxaFesta() * cone.getDiaria()));
 	}
-	
+
 	private Cone coneDisponivel (TipoCone tipoCone) {
 		for (Cone cone : cones) {
 			if (cone.getTipoCone() == tipoCone && cone.isOcupado() == false) {
@@ -85,6 +93,18 @@ public class HotelCozyCone {
 			if (cone.isOcupado()) {
 				if (cone.getCliente().getNome().equalsIgnoreCase(nome))
 					return cone.getCliente();
+			}
+		}
+
+		return null;
+	}
+
+	public Cone buscaConeNoHotel(String nome) {
+		List<Cone> cones = HotelCozyCone.getCones();
+		for (Cone cone : cones) {
+			if (cone.isOcupado()) {
+				if (cone.getCliente().getNome().equalsIgnoreCase(nome))
+					return cone;
 			}
 		}
 
