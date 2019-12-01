@@ -1,7 +1,7 @@
 package business;
 
-public interface Cone {	
-	
+public interface Cone {
+	public String incluir();
 	//Factory de cones
 	public double getDiaria();
 	
@@ -11,4 +11,21 @@ public interface Cone {
 	
 	public void setTaxaFesta(double taxaFesta);
 
+	public boolean isOcupado();
+
+	public void setOcupado(boolean ocupado);
+
+	public TipoCone getTipoCone();
+
+	public Cliente getCliente();
+
+	public void setCliente(Cliente cliente);
+
+	public int getDias();
+
+	public void setDias(int dias);
+
+	public int getNumeroFestas() ;
+
+	public void setNumeroFestas(int numeroFestas);
 }
