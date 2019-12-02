@@ -2,7 +2,7 @@ package servicos;
 
 public class SPA extends ServBase {
 	private final Servicos servico;
-	
+
 	public SPA (Servicos servico) {
 		this.servico = servico;
 	}

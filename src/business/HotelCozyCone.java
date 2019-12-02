@@ -1,5 +1,8 @@
 package business;
 
+import servicos.SPA;
+import servicos.ServBase;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +17,7 @@ public class HotelCozyCone {
 	private int vagas = maxSimples + maxVaranda;
 	private List<Observador> observadores = new ArrayList<Observador>();
 	private static List<Cone> cones = new ArrayList<Cone>();
+	private List<ServBase> servicos = new ArrayList<>();
 
 	public static HotelCozyCone getInstance() {
 		inicializaHotel();
@@ -67,7 +71,14 @@ public class HotelCozyCone {
 			System.out.println("Esse cliente não está hospedado no hotel");
 			return 0;
 		}
-		Cone cone = buscaConeNoHotel(nome);
+
+		int index = buscaConeNoHotel(nome);
+		//Cone cone = buscaConeNoHotel(nome);
+
+		List<Cone> conesList = getCones();
+		Cone cone = conesList.get(index);
+		conesList.remove(index);
+
 		int diasSemFesta = cone.getDias() - cone.getNumeroFestas();
 		int diasComFesta = cone.getNumeroFestas();
 
@@ -76,6 +87,8 @@ public class HotelCozyCone {
 		cone.setOcupado(false);
 		cone.setNumeroFestas(0);
 
+		conesList.add(cone);
+		setCones(conesList);
 		return (diasSemFesta * cone.getDiaria()) + (diasComFesta + (cone.getTaxaFesta() * cone.getDiaria()));
 	}
 
@@ -99,16 +112,18 @@ public class HotelCozyCone {
 		return null;
 	}
 
-	public Cone buscaConeNoHotel(String nome) {
+public int buscaConeNoHotel(String nome) {
+		int i = 0;
 		List<Cone> cones = HotelCozyCone.getCones();
 		for (Cone cone : cones) {
 			if (cone.isOcupado()) {
 				if (cone.getCliente().getNome().equalsIgnoreCase(nome))
-					return cone;
+					return i;
 			}
+			i++;
 		}
 
-		return null;
+		return -1;
 	}
 
 	public static List<Cone> getCones() {

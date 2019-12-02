@@ -6,7 +6,6 @@ public class Cafe extends ServBase{
 	public Cafe (Servicos servico) {
 		this.servico = servico;
 	}
-
 	@Override
 	public double getPreco() {
 		return servico.getPreco() + 20;
