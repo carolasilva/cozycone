@@ -9,12 +9,27 @@ import servicos.SPA;
 import servicos.ServBase;
 import servicos.Servicos;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class HotelCozyConeTest {
     HotelCozyCone hotel = HotelCozyCone.getInstance();
     Cliente cliente = new Cliente(hotel, "Carol");
+
+    @Test
+    public void avisaFilaDeEsperaTest() {
+        assertEquals(0, hotel.getFilaDeEspera().size());
+        String nome;
+
+        for (int i=0; i<10; i++) {
+            nome = "teste" + i;
+            Cliente c = new Cliente(hotel, nome);
+            hotel.checkin(c, 5, TipoCone.SIMPLES);
+        }
+        hotel.checkin(cliente, 5, TipoCone.SIMPLES);
+        assertEquals(0, hotel.getFilaDeEspera().size());
+        hotel.checkout("teste0");
+        assertEquals(0, hotel.getFilaDeEspera().size());
+    }
 
     @Test
     public void checkInTest() {
@@ -27,11 +42,14 @@ public class HotelCozyConeTest {
         String nome;
 
         for (int i=0; i<10; i++) {
-            nome = "teste" + i;
+            nome = "testes" + i;
             Cliente c = new Cliente(hotel, nome);
             hotel.checkin(c, 5, TipoCone.SIMPLES);
         }
-        assertEquals(null, hotel.buscaClienteNoHotel("Carol"));
+
+        Cliente cliente1 = new Cliente(hotel, "oi");
+        hotel.checkin(cliente1, 5, TipoCone.SIMPLES);
+        assertNull(null, hotel.buscaClienteNoHotel("oi"));
 
     }
 

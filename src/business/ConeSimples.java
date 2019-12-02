@@ -13,7 +13,7 @@ public class ConeSimples implements Cone {
 	double taxaFesta = 1.4;
 	boolean ocupado;
 	TipoCone tipoCone = TipoCone.SIMPLES;
-	Cliente cliente;
+	Cliente cliente = null;
 	private int dias = 0;
 	private int numeroFestas = 0;
 	private List<Servicos> servicos = new ArrayList<>();
@@ -104,4 +104,5 @@ public class ConeSimples implements Cone {
 	public boolean equals(Object obj) {
 		return this.getCliente().equals(((Cone) obj).getCliente());
 	}
+
 }

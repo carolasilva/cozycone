@@ -1,5 +1,8 @@
 package business;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente extends Observador {
 
 	String nome;
@@ -21,8 +24,14 @@ public class Cliente extends Observador {
 
 	@Override
 	public void update() {
-		
-		System.out.print("business.Cliente " + this.getNome() + "notificado!");
+		List<Cliente> clientes = this.hotel.getFilaDeEspera();
+		List<Cliente> vazia = new ArrayList<>();
+
+		for (Cliente cliente : clientes) {
+			System.out.print("Cliente " + this.getNome() + " notificado!");
+		}
+
+		this.hotel.setFilaDeEspera(vazia);
 	}
 
 	@Override

@@ -12,8 +12,8 @@ public class ConeVaranda implements Cone {
 	double diaria = 620;
 	double taxaFesta = 1.3;
 	private boolean ocupado;
-	private TipoCone tipoCone;
-	private Cliente cliente;
+	private TipoCone tipoCone = TipoCone.VARANDA;
+	private Cliente cliente = null;
 	private int dias;
 	private int numeroFestas;
 	private List<Servicos> servicos = new ArrayList<>();
@@ -104,4 +104,5 @@ public class ConeVaranda implements Cone {
 	public void setServicos(List<Servicos> servicos) {
 		this.servicos = servicos;
 	}
+
 }

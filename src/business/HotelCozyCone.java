@@ -19,6 +19,7 @@ public class HotelCozyCone {
 	private List<Observador> observadores = new ArrayList<Observador>();
 	private static List<Cone> cones = new ArrayList<Cone>();
 	private List<Servicos> servicos = new ArrayList<>();
+	private List<Cliente> filaDeEspera = new ArrayList<>();
 
 	public static HotelCozyCone getInstance() {
 		inicializaHotel();
@@ -55,14 +56,22 @@ public class HotelCozyCone {
 	}
 
 	public void checkin(Cliente cliente, int numeroDiarias, TipoCone tipoCone) {
-		Cone cone = coneDisponivel(tipoCone);
-		if (cone == null) {
-			// ADICIONA CLIENTE NA LISTA DE ESPERA
+		int index = coneDisponivel(tipoCone);
+		if (index == -1) {
+			System.out.println("Hotel cheio para esse tipo de quarto!");
+			filaDeEspera.add(cliente);
 		}
 		else {
+			List<Cone> listaCones = getCones();
+			listaCones.remove(index);
+			FabricaCone fabrica = new FabricaCone();
+			Cone cone = fabrica.getCone(tipoCone);
 			cone.setOcupado(true);
 			cone.setCliente(cliente);
 			cone.setDias(numeroDiarias);
+			listaCones.add(cone);
+			setCones(listaCones);
+
 		}
 	}
 
@@ -71,6 +80,10 @@ public class HotelCozyCone {
 		if (cliente == null) {
 			System.out.println("Esse cliente não está hospedado no hotel");
 			return 0;
+		}
+
+		if (getFilaDeEspera() != null) {
+			notificaObservadores();
 		}
 
 		int index = buscaConeNoHotel(nome);
@@ -99,13 +112,15 @@ public class HotelCozyCone {
 		return (diasSemFesta * cone.getDiaria()) + (diasComFesta * (cone.getTaxaFesta() * cone.getDiaria())) + valorServicos;
 	}
 
-	private Cone coneDisponivel (TipoCone tipoCone) {
-		for (Cone cone : cones) {
+	private int coneDisponivel (TipoCone tipoCone) {
+		int i = 0;
+		for (Cone cone : getCones()) {
 			if (cone.getTipoCone() == tipoCone && cone.isOcupado() == false) {
-				return cone;
+				return i;
 			}
+			i++;
 		}
-		return null;
+		return -1;
 	}
 	public Cliente buscaClienteNoHotel(String nome) {
 		List<Cone> cones = HotelCozyCone.getCones();
@@ -177,5 +192,13 @@ public class HotelCozyCone {
 		setCones(listaCones);
 
 		return true;
+	}
+
+	public List<Cliente> getFilaDeEspera() {
+		return filaDeEspera;
+	}
+
+	public void setFilaDeEspera(List<Cliente> filaDeEspera) {
+		this.filaDeEspera = filaDeEspera;
 	}
 }
