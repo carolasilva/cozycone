@@ -141,13 +141,41 @@ public class HotelCozyCone {
 		HotelCozyCone.cones = cones;
 	}
 
-	public void addService(String nome, Servicos servico) {
+	public boolean addService(String nome, Servicos servico) {
 		List<Cone> listaCones = getCones();
-		Cone cone = listaCones.get(buscaConeNoHotel(nome));
+		int index = buscaConeNoHotel(nome);
+
+		if (index == -1)
+			return false;
+
+		Cone cone = listaCones.get(index);
+
 		List<Servicos> servicos = cone.getServicos();
 		servicos.add(servico);
+
+		listaCones.remove(index);
 		cone.setServicos(servicos);
+		listaCones.add(cone);
+		setCones(listaCones);
+
+		return true;
 	}
 
-	
+	public boolean darFesta (String nome) {
+		List<Cone> listaCones = getCones();
+		int index = buscaConeNoHotel(nome);
+
+		if (index == -1)
+			return false;
+
+		Cone cone = listaCones.get(index);
+		listaCones.remove(index);
+
+		int numeroFestas = cone.getNumeroFestas();
+		cone.setNumeroFestas(numeroFestas + 1);
+		listaCones.add(cone);
+		setCones(listaCones);
+
+		return true;
+	}
 }

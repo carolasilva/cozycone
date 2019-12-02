@@ -59,7 +59,22 @@ public class HotelCozyConeTest {
     }
 
     @Test
-    public void checkutClienteInexistente () {
+    public void checkoutClienteInexistente () {
         assertEquals(0f, hotel.checkout("teste"), 0);
+    }
+
+    @Test
+    public void checoutComTudo() {
+        Cliente c = new Cliente(hotel, "João");
+        hotel.checkin(c, 5, TipoCone.SIMPLES);
+        Servicos servico = new ServBase();
+        SPA spa = new SPA(servico);
+        Frigobar frigobar = new Frigobar(servico);
+        hotel.addService("João", frigobar);
+        hotel.addService("João", spa);
+        hotel.darFesta("João");
+
+        assertEquals(2752f, hotel.checkout("João"), 0);
+        assertNull(hotel.buscaClienteNoHotel("João"));
     }
 }
