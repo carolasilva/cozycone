@@ -31,7 +31,6 @@ public class HotelCozyConeTest {
 
     }
 
-    @Test
     public void checkoutTest () {
         Cliente c = new Cliente(hotel, "João");
         hotel.checkin(c, 5, TipoCone.SIMPLES);

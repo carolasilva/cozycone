@@ -91,7 +91,7 @@ public class HotelCozyCone {
 		setCones(conesList);
 		return (diasSemFesta * cone.getDiaria()) + (diasComFesta + (cone.getTaxaFesta() * cone.getDiaria()));
 	}
-	
+
 	private Cone coneDisponivel (TipoCone tipoCone) {
 		for (Cone cone : cones) {
 			if (cone.getTipoCone() == tipoCone && cone.isOcupado() == false) {
@@ -112,7 +112,7 @@ public class HotelCozyCone {
 		return null;
 	}
 
-	public int buscaConeNoHotel(String nome) {
+public int buscaConeNoHotel(String nome) {
 		int i = 0;
 		List<Cone> cones = HotelCozyCone.getCones();
 		for (Cone cone : cones) {

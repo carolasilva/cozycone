@@ -1,6 +1,7 @@
 package business;
 
 import business.Cone;
+import servicos.ServBase;
 
 public class ConeSimples implements Cone {
 
