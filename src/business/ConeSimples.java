@@ -2,6 +2,10 @@ package business;
 
 import business.Cone;
 import servicos.ServBase;
+import servicos.Servicos;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConeSimples implements Cone {
 
@@ -10,8 +14,9 @@ public class ConeSimples implements Cone {
 	boolean ocupado;
 	TipoCone tipoCone = TipoCone.SIMPLES;
 	Cliente cliente;
-	private int dias;
-	private int numeroFestas;
+	private int dias = 0;
+	private int numeroFestas = 0;
+	private List<Servicos> servicos = new ArrayList<>();
 
 	ConeSimples() {
 		setOcupado(false);
@@ -86,6 +91,14 @@ public class ConeSimples implements Cone {
 
 	public void setNumeroFestas(int numeroFestas) {
 		this.numeroFestas = numeroFestas;
+	}
+
+	public List<Servicos> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<Servicos> servicos) {
+		this.servicos = servicos;
 	}
 
 	public boolean equals(Object obj) {

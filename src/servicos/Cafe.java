@@ -2,7 +2,7 @@ package servicos;
 
 public class Cafe extends ServBase{
 	private final Servicos servico;
-	
+
 	public Cafe (Servicos servico) {
 		this.servico = servico;
 	}

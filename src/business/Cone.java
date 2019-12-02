@@ -1,5 +1,10 @@
 package business;
 
+import servicos.ServBase;
+import servicos.Servicos;
+
+import java.util.List;
+
 public interface Cone {
 	public String incluir();
 	//Factory de cones
@@ -31,4 +36,8 @@ public interface Cone {
 
 	@Override
 	public boolean equals(Object obj);
+
+	public List<Servicos> getServicos();
+
+	public void setServicos(List<Servicos> servicos);
 }

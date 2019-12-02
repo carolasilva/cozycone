@@ -4,6 +4,10 @@ import business.Cliente;
 import business.HotelCozyCone;
 import business.TipoCone;
 import org.junit.Test;
+import servicos.Frigobar;
+import servicos.SPA;
+import servicos.ServBase;
+import servicos.Servicos;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -31,11 +35,26 @@ public class HotelCozyConeTest {
 
     }
 
+    @Test
     public void checkoutTest () {
         Cliente c = new Cliente(hotel, "João");
         hotel.checkin(c, 5, TipoCone.SIMPLES);
         assertEquals(c, hotel.buscaClienteNoHotel("João"));
-        hotel.checkout("João");
+        assertEquals(2400f, hotel.checkout("João"), 0);
+        assertNull(hotel.buscaClienteNoHotel("João"));
+    }
+
+    @Test
+    public void checkoutWithServices() {
+        Cliente c = new Cliente(hotel, "João");
+        hotel.checkin(c, 5, TipoCone.SIMPLES);
+        Servicos servico = new ServBase();
+        SPA spa = new SPA(servico);
+        Frigobar frigobar = new Frigobar(servico);
+
+        hotel.addService("João", frigobar);
+        hotel.addService("João", spa);
+        assertEquals(2560f, hotel.checkout("João"), 0);
         assertNull(hotel.buscaClienteNoHotel("João"));
     }
 

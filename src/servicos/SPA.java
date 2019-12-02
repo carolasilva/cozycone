@@ -16,4 +16,8 @@ public class SPA extends ServBase {
 	public String getDescricao() {
 		return servico.getDescricao() + ", Spa (120,00)";
 	}
+
+	public Servicos getServico() {
+		return servico;
+	}
 }

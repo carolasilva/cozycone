@@ -1,6 +1,11 @@
 package business;
 
 import business.Cone;
+import servicos.ServBase;
+import servicos.Servicos;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConeVaranda implements Cone {
 	
@@ -11,6 +16,7 @@ public class ConeVaranda implements Cone {
 	private Cliente cliente;
 	private int dias;
 	private int numeroFestas;
+	private List<Servicos> servicos = new ArrayList<>();
 
 	public ConeVaranda() {
 		setOcupado(false);
@@ -89,5 +95,13 @@ public class ConeVaranda implements Cone {
 
 	public boolean equals(Object obj) {
 		return this.getCliente().equals(((Cone) obj).getCliente());
+	}
+
+	public List<Servicos> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<Servicos> servicos) {
+		this.servicos = servicos;
 	}
 }
