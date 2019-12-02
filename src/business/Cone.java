@@ -28,4 +28,7 @@ public interface Cone {
 	public int getNumeroFestas() ;
 
 	public void setNumeroFestas(int numeroFestas);
+
+	@Override
+	public boolean equals(Object obj);
 }

@@ -24,5 +24,10 @@ public class Cliente extends Observador {
 		
 		System.out.print("business.Cliente " + this.getNome() + "notificado!");
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this.getNome().equalsIgnoreCase(((Cliente) obj).getNome());
+	}
 	
 }

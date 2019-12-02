@@ -86,4 +86,8 @@ public class ConeVaranda implements Cone {
 	public void setNumeroFestas(int numeroFestas) {
 		this.numeroFestas = numeroFestas;
 	}
+
+	public boolean equals(Object obj) {
+		return this.getCliente().equals(((Cone) obj).getCliente());
+	}
 }

@@ -7,7 +7,7 @@ public class Frigobar extends ServBase{
 		this.servico = servico;
 	}
 
-	@Override
+    @Override
 	public double getPreco() {
 		return servico.getPreco() + 40;
 	}
